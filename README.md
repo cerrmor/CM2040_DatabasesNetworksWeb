@@ -13,7 +13,7 @@ This course was designed to teach about using databases, to network and interact
   * Updating database information
   * Displaying information
 
-Technologise used:
+Technologies used:
 * JavaScript
 * node.js/EJS
 * MySQL
