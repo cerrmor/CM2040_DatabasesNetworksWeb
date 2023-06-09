@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Update apps</title>
+</head>
+
+<body>
+    <h1> This is the update settings page </h1>
+    <p>Please update the following devices settings.</p>
+    <% availableDevice.forEach(function (deviceList) { %>
+        <%if(updateDevice == deviceList.id){%>
+            <h1>Updating <%= deviceList.name %> Settings</h1>
+        <%}%>
+    <% }) %>
+    <form action="/update-device" method="POST">
+        <h2>Settings:</h2>    
+        <% availableDevice.forEach(function(deviceList){ %>
+            <%if(deviceList.id == updateDevice){%>
+                <input id="id" type="hidden" name="id" value="<%= deviceList.id%>">
+                <%if(deviceList.power == null){%>
+                
+                <%}else{%>
+                    <%if(deviceList.power == 1){%>
+                        ON/OFF: <select id="power" name="power">
+                            <option value="1" selected>ON</option>
+                            <option value="0">OFF</option>
+                        </select>
+                        <br><br>
+                    <%}else{%>
+                        ON/OFF: <select id="power" name="power">
+                            <option value="1" >ON</option>
+                            <option value="0" selected>OFF</option>
+                        </select>
+                        <br><br>
+                    <%}%>
+                <%}%>
+                
+                <%if(deviceList.open == null){%>
+                
+                <%}else{%>
+                    <%if(deviceList.open == 1){%>
+                        OPEN/CLOSED: <select id="open" name="open">
+                            <option value="1" selected>OPEN</option>
+                            <option value="0">CLOSED</option>
+                        </select>
+                        <br><br>
+                    <%}else{%>
+                        OPEN/CLOSED: <select id="open" name="open">
+                            <option value="1" >OPEN</option>
+                            <option value="0"selected>CLOSED</option>
+                        </select>
+                        <br><br>
+                    <%}%>
+                <%}%>
+            
+                <%if(deviceList.locked == null){%>
+                
+                <%}else{%>
+                    <%if(deviceList.locked == 1){%>
+                        LOCKED/UNLOCKED: <select id="locked" name="locked">
+                            <option value="1" selected>LOCKED</option>
+                            <option value="0">UNLOCKED</option>
+                        </select>
+                        <br><br>
+                    <%}else{%>
+                        LOCKED/UNLOCKED: <select id="locked" name="locked">
+                            <option value="1">LOCKED</option>
+                            <option value="0" selected>UNLOCKED</option>
+                        </select>
+                        <br><br>
+                    <%}%>
+                <%}%>
+        
+                <%if(deviceList.temperature != null){%>
+                    SET TEMPERATURE: <input id="temperature" type="<%='int'%>" name="temperature" value="<%= deviceList.temperature%>">
+                    <br><br>
+                <%}%>
+                <%if(deviceList.channel != null){%>
+                    SELECT CHANNEL: <input id="channel" type="<%='int'%>" name="channel" value="<%= deviceList.channel%>">
+                    <br><br>
+                <%}%>
+                <%if(deviceList.volume != null){%>
+                    SET VOLUME: <input id="volume" type="<%='int'%>" name="volume" value="<%= deviceList.volume%>">
+                    <br><br>
+                <%}%>
+                
+            <%}%>
+        <% }) %>
+    
+            
+        <input type="submit" value="OK">
+    </form>
+</body>
+<footer>
+    <div>
+        <a href="/">Home</a>,
+        <a href="/about">About</a>,
+        <a href="/add">Add New Device</a>,
+        <a href="/status">Device Status</a>
+    </div>
+</footer>
+
+</html>

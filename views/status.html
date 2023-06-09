@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Device Status</title>
+</head>
+
+<body>
+    <h1> This is the device status page </h1>
+    <p>This page displays all the devices you have added and allows you to view, update, or delete the device.</p>
+
+    <h2>Pleas select a smart device to view!</h2>
+    <form action="/device-Settings" method="POST">
+        <select id="deviceSettings" name="deviceSettings">
+            <% availableDevice.forEach(function(deviceList){ %>
+                <option value = "<%= deviceList.id%>"><%= count += 1%>. <%= deviceList.name %></option>
+            <% }) %>
+        </select>
+        <input type="submit" value="OK">
+    </form>
+    <h2>Your Smart Devices</h2>
+    <ol>
+    
+        <% availableDevice.forEach(function(deviceList){ %>
+            <li><%= deviceList.name %></li>
+        <% }) %>
+    
+    </ol>
+</body>
+<footer>
+    <div>
+        <a href="/">Home</a>,
+        <a href="/about">About</a>,
+        <a href="/add">Add New Device</a>
+    </div>
+</footer>
+</html>

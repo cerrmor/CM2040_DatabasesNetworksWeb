@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Add a New Device</title>
+</head>
+
+<body>
+    <h1> Add New Device </h1>
+    <p>Please select the type of device to begin adding a new device.</p>
+
+    <form action="/add-device" method="POST">
+        
+        <br><br>
+        Type Of Device: <select name = "device" id = "device">
+            <option>Select Device Type</option>
+            <% availableDevice.forEach(function (deviceList) { %>
+               <option value = "<%= deviceList.id%>"><%= deviceList.name %></option>
+            <% }) %>
+        </select>
+        
+        <br><br>
+        
+        <input type="submit" value="OK">
+    </form>
+    
+    <br><br>
+
+</body>
+<footer>
+    <div>
+        <a href="/">Home</a>,
+        <a href="/about">About</a>,
+        <a href="/status">Device Status</a>
+    </div>
+</footer>
+
+</html>
