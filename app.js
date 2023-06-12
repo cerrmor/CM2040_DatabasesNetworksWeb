@@ -7,8 +7,8 @@ const app = express();
 const port = 8089;
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'your MySQL username',
-    password: 'your MySQL password',
+    user: 'root',//your MySQL username
+    password: '',//your MySQL password
     database: 'devices'
 });
 
@@ -21,8 +21,11 @@ db.connect((err) => {
 global.db = db;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'));
+
 
 require("./routes/main")(app);
+
 
 app.set("views", __dirname + "/views");
 app.set("view engin", "ejs");

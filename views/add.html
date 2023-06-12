@@ -3,36 +3,57 @@
 
 <head>
     <title>Add a New Device</title>
+    <link rel="stylesheet" type="text/css" media='screen' charset='utf-8' href="css/style.css"/>
 </head>
 
 <body>
-    <h1> Add New Device </h1>
-    <p>Please select the type of device to begin adding a new device.</p>
+    <div id="container">
+        <main>
+            <div>
+                <h1> Add New Device </h1>
+                <p>Please select the type of device to begin adding a new device.</p>
+                <div id="myForm">
+                    <form action="/add-device" method="POST">
+                        
+                        <br><br>
+                        Type Of Device: <select name = "device" id = "device">
+                            <option id="default">Select Device Type</option>
+                            <% availableDevice.forEach(function (deviceList) { %>
+                            <option value = "<%= deviceList.id%>"><%= deviceList.name %></option>
+                            <% }) %>
+                        </select>
+                        
+                        <br><br>
+                        <div id="formButtons">
+                            <input id="submitButton" type="submit" value="OK" onclick="return empty()">
+                        </div>
+                    </form>
+                </div>
+                
+                <br/><br/>
+            </div>
+        </main>
+                
+        <footer>
+            <div>
+                <button id="myButton1" onclick="location.href='/';">Home</button>
+                <button id="myButton2" onclick="location.href='/about';">About</button>
+                <button id="myButton3" onclick="location.href='/status';">Device Status</button>
+            </div>
+        </footer>
 
-    <form action="/add-device" method="POST">
-        
-        <br><br>
-        Type Of Device: <select name = "device" id = "device">
-            <option>Select Device Type</option>
-            <% availableDevice.forEach(function (deviceList) { %>
-               <option value = "<%= deviceList.id%>"><%= deviceList.name %></option>
-            <% }) %>
-        </select>
-        
-        <br><br>
-        
-        <input type="submit" value="OK">
-    </form>
-    
-    <br><br>
+        <script>
+            function empty(){
+                var x;
+                x = document.getElementById("default").value;
+                if (x=="Select Device Type"){
+                    alert("Please select a device!");
+                    return false;
+                }
+            }
+        </script>
 
 </body>
-<footer>
-    <div>
-        <a href="/">Home</a>,
-        <a href="/about">About</a>,
-        <a href="/status">Device Status</a>
-    </div>
-</footer>
+
 
 </html>

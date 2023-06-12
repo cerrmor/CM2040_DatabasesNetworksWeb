@@ -3,20 +3,26 @@
 
 <head>
     <title> <%= title%> </title>
+    <link rel="stylesheet" type="text/css" media='screen' charset='utf-8' href="css/style.css"/>
 </head>
 
 <body>
-    <h1><%= header%></h1>
-    <p>To begin using the <%= title%> please navigate to the add device page!</p>
-
+    <div id="container">
+        <main>
+            <div>
+                <h1><%= header%></h1>
+                <p>To begin using the <%= title%> please navigate to the add device page!</p>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <button id="myButton1" onclick="location.href='/about';">About</button>
+                <button id="myButton2" onclick="location.href='/add';">Add New Device</button>
+                <button id="myButton3" onclick="location.href='/status';">Device Status</button>
+            </div>
+        </footer>
+    </div>
         
 </body>
-<footer>
-    <div>
-        <a href="/about">About</a>,
-        <a href="/add">Add New Device</a>,
-        <a href="/status">Device Status</a>
-    </div>
-</footer>
 
 </html>

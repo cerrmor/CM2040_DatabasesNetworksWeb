@@ -3,20 +3,27 @@
 
 <head>
     <title>Device Added</title>
+    <link rel="stylesheet" type="text/css" media='screen' charset='utf-8' href="css/style.css"/>
 </head>
 
 <body>
-    <h1> Your new device has been added!! </h1>
-    <p>You will be redirected to the add new device page shortly!</p>
+    <div id="container">
+        <main>
+            <div>
+                <h1> Your new device has been added!! </h1>
+                <p>You will be redirected to the add new device page shortly!</p>
 
-    <script>
-        setTimeout(function () {
-            // after 2 seconds
-            window.location = "/add";
-        }, 3000)
-    </script>
-
-    <br><br>
+                <script>
+                    setTimeout(function () {
+                        // after 2 seconds
+                        window.location = "/add";
+                    }, 3000)
+                </script>
+            </div>
+            <br><br>
+        </div>
+    </main>
+</div>
 
 </body>
 </html>

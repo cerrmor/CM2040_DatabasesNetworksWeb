@@ -4,78 +4,105 @@
 
 <head>
     <title>device status</title>
+    <link rel="stylesheet" type="text/css" media='screen' charset='utf-8' href="css/style.css"/>
 </head>
 
 <body>
-    <% availableDevice.forEach(function(deviceList){ %>
-        <%if(deviceList.id == deviceSettings){%>
-            <h1><%= deviceList.name %></h1>
-            <h2>Device Settings</h2>
-            <ul>
-                <%if(deviceList.power != null){%>
-                    <%if(deviceList.power == 1){%>
-                        <li>The <%= deviceList.name%> power is: ON</li>
-                    <%}else{%>
-                        <li>The <%= deviceList.name%> power is: OFF</li>
+    <div id="container">
+        <main>
+            <div>
+                <% availableDevice.forEach(function(deviceList){ %>
+                    <%if(deviceList.id == deviceSettings){%>
+                        <h1 class="devName"><%= deviceList.name %></h1>
+                        
+                        <div id="settingsContainer">
+                            <div>
+                                <h2>Device Settings</h2>
+                                <ul>
+                                    <%if(deviceList.power != null){%>
+                                        <%if(deviceList.power == 1){%>
+                                            <li>The <%= deviceList.name%> power is: 
+                                                <span class="currSettings">ON</span></li>
+                                        <%}else{%>
+                                            <li>The <%= deviceList.name%> power is: 
+                                                <span class="currSettings">OFF</span></li>
+                                        <%}%>
+                                    <%}%>
+                                    <%if(deviceList.open != null){%>
+                                        <%if(deviceList.open == 1){%>
+                                            <li>The <%= deviceList.name%> door is: 
+                                                <span class="currSettings">OPEN</span></li>
+                                        <%}else{%>
+                                            <li>The <%= deviceList.name%> door is: 
+                                                <span class="currSettings">CLOSED</span></li>
+                                        <%}%>
+                                    <%}%>
+                                    <%if(deviceList.locked != null){%>
+                                        <%if(deviceList.locked == 1){%>
+                                            <li>The <%= deviceList.name%> is: 
+                                                <span class="currSettings">LOCKED</span></li>
+                                        <%}else{%>
+                                            <li>The <%= deviceList.name%> is: 
+                                                <span class="currSettings">UNLOCKED</span></li>
+                                        <%}%>
+                                    <%}%>
+                                    <%if(deviceList.temperature != null){%>
+                                        <li>the <%= deviceList.name%> temperature is set to: 
+                                            <span class="currSettings"><%= deviceList.temperature%></span></li>
+                                    <%}%>
+                                    <%if(deviceList.channel != null){%>
+                                        <li>the <%= deviceList.name%> is set to channel: 
+                                            <span class="currSettings"><%= deviceList.channel%></span></li>
+                                    <%}%>
+                                    <%if(deviceList.volume != null){%>
+                                        <li>the <%= deviceList.name%> volume is set to: 
+                                            <span class="currSettings"><%= deviceList.volume%></span></li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                        </div>
                     <%}%>
-                <%}%>
-                <%if(deviceList.open != null){%>
-                    <%if(deviceList.open == 1){%>
-                        <li>The <%= deviceList.name%> door is: OPEN</li>
-                    <%}else{%>
-                        <li>The <%= deviceList.name%> door is: CLOSED</li>
-                    <%}%>
-                <%}%>
-                <%if(deviceList.locked != null){%>
-                    <%if(deviceList.locked == 1){%>
-                        <li>The <%= deviceList.name%> is: LOCKED </li>
-                    <%}else{%>
-                        <li>The <%= deviceList.name%> is: UNLOCKED </li>
-                    <%}%>
-                <%}%>
-                <%if(deviceList.temperature != null){%>
-                    <li>the <%= deviceList.name%> temperature is set to:<%= deviceList.temperature%></li>
-                <%}%>
-                <%if(deviceList.channel != null){%>
-                    <li>the <%= deviceList.name%> is set to channel: <%= deviceList.channel%></li>
-                <%}%>
-                <%if(deviceList.volume != null){%>
-                    <li>the <%= deviceList.name%> volume is set to: <%= deviceList.volume%></li>
-                <%}%>
-            </ul>
-        <%}%>
-    <% }) %>
-    <form action = "/update" method= "POST">
-        <input id="deviceToUpdate" type="hidden" name="deviceToUpdate" value="<%= deviceSettings%>">
-        <input type="submit" value="update">
-    </form>
-    <form action = "/delete" method = "POST" onclick="return ConfirmDelete()">
-        <input id="deviceToDelete" type="hidden" name="deviceToDelete" value="<%= deviceSettings%>">
-        <% availableDevice.forEach(function(deviceList){ %>
-            <%if(deviceList.id == deviceSettings){%>
-                <input id="nameToDelete" type="hidden" name="nameToDelete" value="<%= deviceList.name%>">
-            <%}%>
-        <%})%>
-        <input type="submit" value="delete">
-    </form>
-    <script>
-        function ConfirmDelete() {
-            alert("Are you sure you want to delete this device?");
-            if (confirm("Are you sure you want to delete this device?")) {
-                return true;
-            }
-            alert("Device was NOT deleted!");
-            return false;
-        }
-    </script>
-</body>
-<footer>
-    <div>
-        <a href="/">Home</a>,
-        <a href="/about">About</a>,
-        <a href="/add">Add New Device</a>,
-        <a href="/status">Device Status</a>
+                <% }) %>
+                <div id="formButtons">
+                    <div class="formButton1">
+                        <form action = "/update" method= "POST">
+                            <input id="deviceToUpdate" type="hidden" name="deviceToUpdate" value="<%= deviceSettings%>">
+                            <input id="updateButton" type="submit" value="update">
+                        </form>
+                    </div>
+                    <div class="formButton2">
+                        <form action = "/delete" method = "POST" onclick="return ConfirmDelete()">
+                            <input id="deviceToDelete" type="hidden" name="deviceToDelete" value="<%= deviceSettings%>">
+                            <% availableDevice.forEach(function(deviceList){ %>
+                                <%if(deviceList.id == deviceSettings){%>
+                                    <input id="nameToDelete" type="hidden" name="nameToDelete" value="<%= deviceList.name%>">
+                                <%}%>
+                            <%})%>
+                            <input id="deleteButton" type="submit" value="delete">
+                        </form>
+                    </div>
+                </div>
+                <script>
+                    function ConfirmDelete() {
+                        alert("Are you sure you want to delete this device?");
+                        if (confirm("Are you sure you want to delete this device?")) {
+                            return true;
+                        }
+                        alert("Device was NOT deleted!");
+                        return false;
+                    }
+                </script>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <button id="myButton1" onclick="location.href='/';">Home</button>
+                <button id="myButton2" onclick="location.href='/about';">About</button>
+                <button id="myButton3" onclick="location.href='/add';">Add New Device</button>
+                <button id="myButton3" onclick="location.href='/status';">Device Status</button>
+            </div>
+        </footer>
     </div>
-</footer>
+</body>
 
 </html>

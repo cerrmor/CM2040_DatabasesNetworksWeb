@@ -1,0 +1,117 @@
+html, body{
+    height:100%;
+    width:100%;
+}
+body{
+    background-color: dimgray;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+#container{
+    background-color: white;
+    margin:10px;
+    padding:15px;
+    min-height: 100;
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex: 0.2;
+}
+
+header, footer{
+    display:flex;
+    justify-content: center;
+    flex:0.2;
+}
+button {
+    padding:20px;
+    border-radius: 15px;
+}
+button:hover {
+    background-color: greenyellow;
+}
+button:active{
+    background-color: darkgreen;
+}
+h1,p{
+    text-align: center;
+}
+#myForm{
+    display:flex;
+    justify-content: center;
+}
+#formButtons{
+    display:flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+#deviceList{
+    display: flex;
+    /* flex:1;
+    flex-direction: column; */
+    justify-content: center;
+}
+#settingsContainer{
+    display:flex;
+    justify-content: center;
+}
+.devType{
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+}
+.currSettings{
+    font-weight: bold;
+}
+.devName{
+    text-transform: uppercase;
+}
+.options{
+    background-color: black;
+    color: white;
+    /* margin:5px; */
+    padding:5px;
+}
+.view{
+    color: greenyellow;
+    /* text-shadow: 2px 2px black; */
+}
+.update{
+    color: greenyellow;
+    /* text-shadow: 2px 2px black; */
+}
+.deleted{
+    color: red;
+    /* text-shadow: 2px 2px black; */
+}
+.statusInstruction{
+    display: flex;
+    justify-content: center;
+}
+#updateButton, #deleteButton, #submitButton{
+    padding:6px;
+}
+#submitButton{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#updateButton:hover,#submitButton:hover{
+    background-color: greenyellow;
+}
+#updateButton:active,#submitButton:active{
+    background-color: darkgreen;
+}
+#deleteButton:hover{
+    background-color: red;
+}
+#deleteButton:active{
+    background-color: darkred;
+}
+.formButton1, .formButton2{
+    margin: 5px;
+    padding:3px;
+}
+

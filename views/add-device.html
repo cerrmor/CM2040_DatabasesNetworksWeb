@@ -3,75 +3,91 @@
 
 <head>
     <title>Add New Device</title>
+    <link rel="stylesheet" type="text/css" media='screen' charset='utf-8' href="css/style.css"/>
 </head>
 
 <body>
-    <p>Please select the settings for this device.</p>
-    <form action="/add-results" method="POST">
-        <br><br>
-        
-        <% availableDevice.forEach(function (deviceList) { %>
-            <%if(chosenDevice == deviceList.id){%>
-                <h2>Type Of Device: <%= deviceList.name %></h2>
-                <input id="device" type="hidden" name="device" value="<%= deviceList.id%>">
-            <%}%>
-        <% }) %>
+    <div id="container">
+        <main>
+            <div>
+                <h1>Initial Device Settings</h1>
+                <p>Please select the settings for this device.</p>
+                <div id="myForm">
+                    <form action="/add-results" method="POST">
+                        <br><br>
+                        
+                        <% availableDevice.forEach(function (deviceList) { %>
+                            <%if(chosenDevice == deviceList.id){%>
+                                <p class="devType">Type Of Device: <strong class="devName"><%= deviceList.name %></strong></p>
+                                <input id="device" type="hidden" name="device" value="<%= deviceList.id%>">
+                            <%}%>
+                        <% }) %>
 
-        <h2>Settings</h2>
-        <%if(availableDevice[chosenDevice-1].power == 0){%>
-        <%}else{%>
-            ON/OFF: <select id="power" name="power">
-                <option value="1">ON</option>
-                <option value="0">OFF</option>
-            </select>
-        <br><br>
-        <%} %>
+                        <h2>Settings</h2>
+                        <%if(availableDevice[chosenDevice-1].power == 0){%>
+                        <%}else{%>
+                            ON/OFF: <select id="power" name="power">
+                                <option value="1">ON</option>
+                                <option value="0">OFF</option>
+                            </select>
+                        <br><br>
+                        <%} %>
 
-        <%if(availableDevice[chosenDevice-1].open == 0){%>
-        <%}else{%>
-            OPEN/CLOSED: <select id="open" name="open">
-                <option value="1">OPEN</option>
-                <option value="0">CLOSED</option>
-            </select>
-            <br><br>
-        <%} %>
+                        <%if(availableDevice[chosenDevice-1].open == 0){%>
+                        <%}else{%>
+                            OPEN/CLOSED: <select id="open" name="open">
+                                <option value="1">OPEN</option>
+                                <option value="0">CLOSED</option>
+                            </select>
+                            <br><br>
+                        <%} %>
 
-        <%if(availableDevice[chosenDevice-1].locked == 0){%>
-        <%}else{%>
-            LOCKED/UNLOCKED: <select id="locked" name="locked">
-                <option value="1">LOCKED</option>
-                <option value="0">UNLOCKED</option>
-            </select>
-            <br><br>
-        <%} %>
+                        <%if(availableDevice[chosenDevice-1].locked == 0){%>
+                        <%}else{%>
+                            LOCKED/UNLOCKED: <select id="locked" name="locked">
+                                <option value="1">LOCKED</option>
+                                <option value="0">UNLOCKED</option>
+                            </select>
+                            <br><br>
+                        <%} %>
 
-        <%if(availableDevice[chosenDevice-1].temperature == 0){%>
-        <%}else{%>
-            SET TEMPERATURE: <input id="temperature" type="<%='int'%>" name="temperature" value="Default">
-            <br><br>
-        <%}%>
-        
-        <%if(availableDevice[chosenDevice-1].volume == 0){%>
-        <%}else{%>
-            SET VOLUME: <input id="volume" type="<%='int'%>" name="volume" value="Default">
-            <br><br>
-        <%}%>
+                        <%if(availableDevice[chosenDevice-1].temperature == 0){%>
+                        <%}else{%>
+                            SET TEMPERATURE: <input id="temperature" type="<%='int'%>" name="temperature" placeholder="Temperature">
+                            <br><br>
+                        <%}%>
+                        
+                        <%if(availableDevice[chosenDevice-1].volume == 0){%>
+                        <%}else{%>
+                            SET VOLUME: <input id="volume" type="<%='int'%>" name="volume" placeholder="Volume">
+                            <br><br>
+                        <%}%>
 
-        <%if(availableDevice[chosenDevice-1].channel == 0){%>
-        <%}else{%>
-            SELECT CHANNEL: <input id="channel" type="<%='int'%>" name="channel" value="Default">
-            <br><br>
-        <%}%>
+                        <%if(availableDevice[chosenDevice-1].channel == 0){%>
+                        <%}else{%>
+                            SELECT CHANNEL: <input id="channel" type="<%='int'%>" name="channel" placeholder="Channel">
+                            <br><br>
+                        <%}%>
 
-        <input type="submit" value="OK">
-    </form>
-</body>
-<footer>
-    <div>
-        <a href="/">Home</a>,
-        <a href="/about">About</a>,
-        <a href="/status">Device Status</a>
+                        <div id="formButtons">
+                            <input id="submitButton" type="submit" value="OK">
+                        </div>
+                    </form>
+                </div>
+
+                <br/><br/>
+
+            </div>
+        </main>
+        <footer>
+            <div>
+                <button id="myButton1" onclick="location.href='/';">Home</button>
+                <button id="myButton2" onclick="location.href='/about';">About</button>
+                <button id="myButton3" onclick="location.href='/status';">Device Status</button>
+            </div>
+        </footer>
     </div>
-</footer>
+</body>
+
 
 </html>

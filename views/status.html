@@ -3,35 +3,66 @@
 
 <head>
     <title>Device Status</title>
+    <link rel="stylesheet" type="text/css" media='screen' charset='utf-8' href="css/style.css"/>
 </head>
 
 <body>
-    <h1> This is the device status page </h1>
-    <p>This page displays all the devices you have added and allows you to view, update, or delete the device.</p>
+    <div id="container">
+        <main>
+            <div>
+                <h1> This is the device status page </h1>
+                <p>This page displays all the devices you have added and allows you to: 
+                
+                <br/>
+                <br/>
+                
+                <span class="options">
+                    <span class="view">view</span>, 
+                    <span class="update">update</span>, or 
+                    <span class="deleted">delete</span>
+                </span> 
+                
+                <br/>
+                <br/>
+                
+                the device.</p>
 
-    <h2>Pleas select a smart device to view!</h2>
-    <form action="/device-Settings" method="POST">
-        <select id="deviceSettings" name="deviceSettings">
-            <% availableDevice.forEach(function(deviceList){ %>
-                <option value = "<%= deviceList.id%>"><%= count += 1%>. <%= deviceList.name %></option>
-            <% }) %>
-        </select>
-        <input type="submit" value="OK">
-    </form>
-    <h2>Your Smart Devices</h2>
-    <ol>
-    
-        <% availableDevice.forEach(function(deviceList){ %>
-            <li><%= deviceList.name %></li>
-        <% }) %>
-    
-    </ol>
-</body>
-<footer>
-    <div>
-        <a href="/">Home</a>,
-        <a href="/about">About</a>,
-        <a href="/add">Add New Device</a>
+                <div class="statusInstruction">
+                    <h2>Please select a smart device to view!</h2>
+                </div>
+
+                <div id="myForm">
+                    <form action="/device-Settings" method="POST">
+                        <select id="deviceSettings" name="deviceSettings">
+                            <% availableDevice.forEach(function(deviceList){ %>
+                                <option value = "<%= deviceList.id%>"><%= count += 1%>. <%= deviceList.name %></option>
+                            <% }) %>
+                        </select>
+                        <input id="submitButton" type="submit" value="OK">
+                    </form>
+                </div>
+                
+                <div id="deviceList">
+                    <div>
+                        <h2>Your Smart Devices</h2>
+                        <ol>
+                        
+                            <% availableDevice.forEach(function(deviceList){ %>
+                                <li><%= deviceList.name %></li>
+                            <% }) %>
+                        
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <button id="myButton1" onclick="location.href='/';">Home</button>
+                <button id="myButton2" onclick="location.href='/about';">About</button>
+                <button id="myButton3" onclick="location.href='/add';">Add New Device</button>
+            </div>
+        </footer>
     </div>
-</footer>
+</body>
 </html>

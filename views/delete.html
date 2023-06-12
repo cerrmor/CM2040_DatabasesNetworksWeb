@@ -3,19 +3,28 @@
 
 <head>
     <title>Delete Page</title>
+    <link rel="stylesheet" type="text/css" media='screen' charset='utf-8' href="css/style.css"/>
 </head>
 
 <body>
-    <h1> Device Deleted!</h1>
-    <p>Congratulations you have successfuly deleted <%= deleteDevice.nameToDelete%> </p>
-    <p>You will shortly be redirected to the device status page.</p>
-    <script>
-        setTimeout(function () {
-            // after 2 seconds
-            window.location = "/status";
-        }, 3000)
-    </script>
-
+    <div id="container">
+        <main>
+            <div>
+                <h1> Device Deleted!</h1>
+                <p>Congratulations you have successfuly 
+                <br/>
+                <br/>
+                <span class="deleted">deleted</span> <strong class="devName"><%= deleteDevice.nameToDelete%></strong> </p>
+                <p>You will shortly be redirected to the device status page.</p>
+                <script>
+                    setTimeout(function () {
+                        // after 2 seconds
+                        window.location = "/status";
+                    }, 3000)
+                </script>
+            </div>
+        </main>
+    </div>
 </body>
 
 
