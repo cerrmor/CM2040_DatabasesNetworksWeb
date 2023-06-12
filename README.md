@@ -19,3 +19,4 @@ Technologies used:
 * node.js/EJS
 * MySQL
 * HTML
+* CSS
