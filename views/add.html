@@ -17,7 +17,7 @@
                         
                         <br><br>
                         Type Of Device: <select name = "device" id = "device">
-                            <option id="default">Select Device Type</option>
+                            <option id="default1">Select Device Type</option>
                             <% availableDevice.forEach(function (deviceList) { %>
                             <option value = "<%= deviceList.id%>"><%= deviceList.name %></option>
                             <% }) %>
@@ -45,8 +45,10 @@
         <script>
             function empty(){
                 var x;
-                x = document.getElementById("default").value;
-                if (x=="Select Device Type"){
+                var y;
+                x = document.getElementById("device").value;
+
+                if (x == "Select Device Type"){
                     alert("Please select a device!");
                     return false;
                 }
